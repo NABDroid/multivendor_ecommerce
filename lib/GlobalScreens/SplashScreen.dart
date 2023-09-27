@@ -13,7 +13,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     checkUserStatus();
   }
@@ -33,17 +32,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void checkUserStatus() {
-    
-    
-    
-    
     Future.delayed(Duration(seconds: 5), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CustomerHomeScreen()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => CustomerHomeScreen()));
     });
-    
-
-
-
-
   }
 }
