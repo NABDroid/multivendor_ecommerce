@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:multivendor_ecommerce/CustomerScreens/CustomerHomeScreen.dart';
+import 'package:multivendor_ecommerce/GlobalScreens/LoginScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void checkUserStatus() {
     Future.delayed(Duration(seconds: 5), () {
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => CustomerHomeScreen()));
+          MaterialPageRoute(builder: (context) => LoginScreen())); //later change to HomePage
     });
   }
 }
