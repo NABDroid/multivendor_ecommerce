@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'GlobalScreens/SplashScreen.dart';
+import 'package:multivendor_ecommerce/GlobalScreens/SplashScreen.dart';
+
+
 
 void main() {
   runApp(const AppRoot());
