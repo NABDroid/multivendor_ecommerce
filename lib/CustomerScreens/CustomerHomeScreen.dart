@@ -86,31 +86,14 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
                   Text("For You",style: headingTextStyle,),
                   const SizedBox(height: 10,),
 
-                  Stack(
-                    children: [
-                      Image(
-                        image: AssetImage("assets/Product-Images/mba15-midnight.jpg"),
-                        width: double.infinity,
-                        height: 210,
-                      ),
-                      Container(
-                        // color: Colors.red,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 170),
-                            child: Card(
-                              // color: Colors.yellow,
-                                child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text("MacBook M2 2023", style: titleTextStyle,),
-                                        Text("\$1999", style: descriptionTextStyle,),
-                                      ],
-                                    )
-                                )),
-                          ))
-                    ],
+                  CarouselSlider(
+                    options: CarouselOptions(
+                        autoPlay: true,
+                        autoPlayInterval: Duration(seconds: 3),
+                        enlargeCenterPage: true,
+                        enlargeStrategy: CenterPageEnlargeStrategy.height
+                    ),
+                    items: Personalised.personalised_items.map((personalised_products) => HeroCarouselCard2(personalised_products: personalised_products)).toList(),
                   ),
 
                   const SizedBox(height: 15,),
@@ -206,6 +189,57 @@ class HeroCarouselCard extends StatelessWidget {
                       vertical: 10.0, horizontal: 20.0),
                   child: Text(
                     trending_products.name,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )),
+    );
+  }
+}
+
+
+class HeroCarouselCard2 extends StatelessWidget {
+
+  final Personalised personalised_products;
+
+  const HeroCarouselCard2({
+    required this.personalised_products,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(5.0),
+      child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          child: Stack(
+            children: <Widget>[
+              Image.network(personalised_products.imgUrl, fit: BoxFit.cover, width: 1000.0),
+              Positioned(
+                bottom: 0.0,
+                left: 0.0,
+                right: 0.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromARGB(200, 0, 0, 0),
+                        Color.fromARGB(0, 0, 0, 0)
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 20.0),
+                  child: Text(
+                    personalised_products.name,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,
