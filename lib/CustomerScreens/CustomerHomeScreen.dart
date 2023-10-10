@@ -1,5 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:multivendor_ecommerce/Global.dart';
 import 'package:flutter/material.dart';
+import 'package:multivendor_ecommerce/models/models.dart';
 
 // ignore_for_file: prefer_const_constructors
 
@@ -11,6 +13,7 @@ class CustomerHomeScreen extends StatefulWidget {
 }
 
 class _CustomerHomePageState extends State<CustomerHomeScreen> {
+
   int currentIndex = 0;
 
   @override
@@ -68,33 +71,17 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
                   Text("Trending Products",style: headingTextStyle,),
                   const SizedBox(height: 10,),
 
-                  //later change to carousel
-                  Stack(
-                    children: [
-                      Image(
-                        image: AssetImage("assets/Product-Images/notebook-xps-15-9530-t-black-gallery-1.jpg"),
-                        width: double.infinity,
-                        height: 210,
-                      ),
-                      Container(
-                          // color: Colors.red,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 170),
-                            child: Card(
-                                // color: Colors.yellow,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text("Dell XPS 15 2023", style: titleTextStyle,),
-                                      Text("\$1499", style: descriptionTextStyle,),
-                                    ],
-                                  )
-                                )),
-                          ))
-                    ],
+                CarouselSlider(
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 5),
+                    enlargeCenterPage: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.height
                   ),
+                  items: Trending.trending_items.map((trending_products) => HeroCarouselCard(trending_products: trending_products)).toList(),
+                ),
+
+
                   const SizedBox(height: 15,),
                   Text("For You",style: headingTextStyle,),
                   const SizedBox(height: 10,),
@@ -181,3 +168,58 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
         ));
   }
 }
+
+
+class HeroCarouselCard extends StatelessWidget {
+
+  final Trending trending_products;
+
+  const HeroCarouselCard({
+    required this.trending_products,
+});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(5.0),
+      child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          child: Stack(
+            children: <Widget>[
+              Image.network(trending_products.imgUrl, fit: BoxFit.cover, width: 1000.0),
+              Positioned(
+                bottom: 0.0,
+                left: 0.0,
+                right: 0.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromARGB(200, 0, 0, 0),
+                        Color.fromARGB(0, 0, 0, 0)
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 20.0),
+                  child: Text(
+                    trending_products.name,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )),
+    );
+  }
+}
+
+
+
+

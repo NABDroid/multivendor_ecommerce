@@ -1,0 +1,1 @@
+export 'trending_model.dart';
