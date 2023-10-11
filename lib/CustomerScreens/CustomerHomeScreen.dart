@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:multivendor_ecommerce/CustomWidgets/NavigationDrawerWidget.dart';
 import 'package:multivendor_ecommerce/CustomerScreens/ProductDetailsScreen.dart';
 import 'package:multivendor_ecommerce/Global.dart';
 import 'package:flutter/material.dart';
@@ -22,19 +23,21 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
         child: Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         // backgroundColor: Colors.white70,
-        leading: IconButton(
-          color: darkIconColor,
-          onPressed: () {},
-          icon: Image.asset(
-              "assets/icons/menus_32px.png"), //change to Hamburger Icon
-        ),
+        // leading: IconButton(
+        //   color: darkIconColor,
+        //   onPressed: () {},
+        //   icon: Image.asset(
+        //       "assets/icons/menus_32px.png"), //change to Hamburger Icon
+        // ),
         actions: [
           IconButton(
               onPressed: () {},
               icon: Image.asset("assets/icons/cart_32px.png")),
         ],
       ),
+      drawer: NavigationDrawerWidget(),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
           items: [
@@ -129,6 +132,7 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
                                 builder: (context) => ProductDetailsScreen(productID: 0)));
                       },
                       child: Card(
+                        elevation: 5.0,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
