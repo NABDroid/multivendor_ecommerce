@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:multivendor_ecommerce/CustomerScreens/CustomerHomeScreen.dart';
 import 'package:multivendor_ecommerce/Global.dart';
 
+import '../CustomerScreens/SignUp.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -127,7 +129,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: titleTextStyle,
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignUp()));
+                      },
                       child: Text(
                         "Sign Up",
                         style: titleTextStyle,
