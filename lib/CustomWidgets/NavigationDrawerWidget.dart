@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:multivendor_ecommerce/CustomerScreens/SignUp.dart';
+import 'package:multivendor_ecommerce/Global.dart';
+import 'package:multivendor_ecommerce/GlobalScreens/LoginScreen.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   const NavigationDrawerWidget({super.key});
@@ -11,8 +15,10 @@ class NavigationDrawerWidget extends StatelessWidget {
         children: [
           Stack(
             children: <Widget>[
-              Image.asset("assets/avatar.png",
-                  fit: BoxFit.cover, width: 1000.0),
+              Image.asset(
+                "assets/avatar.png",
+                fit: BoxFit.cover,
+              ),
               Positioned(
                 bottom: 0.0,
                 left: 0.0,
@@ -29,9 +35,9 @@ class NavigationDrawerWidget extends StatelessWidget {
                     ),
                   ),
                   padding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                      const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   child: Text(
-                    "Log In",
+                    "Customer Name",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22.0,
@@ -42,7 +48,104 @@ class NavigationDrawerWidget extends StatelessWidget {
               ),
             ],
           ),
-
+          const SizedBox(height: 8,),
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            child: Card(
+              color: const Color(0xFF1A3938),
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Categories",style: menuItemTextStyle,),
+                    const Icon(Icons.category,color: Colors.white,)
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            child: Card(
+              color: const Color(0xFF1A3938),
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Order Status",style: menuItemTextStyle,),
+                    const Icon(Icons.watch_later_rounded,color: Colors.white)
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            child: Card(
+              color: const Color(0xFF1A3938),
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Inbox",style: menuItemTextStyle,),
+                    const Icon(Icons.message,color: Colors.white)
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            child: Card(
+              color: const Color(0xFF1A3938),
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Customer Support",style: menuItemTextStyle,),
+                    const Icon(Icons.headset_mic,color: Colors.white)
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            child: Card(
+              color: const Color(0xFF1A3938),
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Settings",style: menuItemTextStyle,),
+                    const Icon(Icons.settings,color: Colors.white,)
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: MediaQuery.sizeOf(context).height * 0.24,),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Icon(Icons.login),
+              ),
+              TextButton(onPressed: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+              }, child: Text("Log In / Register", style: TextStyle(fontSize: 22,color: Colors.black)),),
+            ],
+          )
         ],
       ),
     );

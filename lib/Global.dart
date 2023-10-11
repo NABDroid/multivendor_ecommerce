@@ -19,4 +19,5 @@ Color primaryButtonColor = Colors.blueGrey,
 TextStyle titleTextStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
 TextStyle descriptionTextStyle = TextStyle(fontWeight: FontWeight.normal, fontSize: 14);
 TextStyle headingTextStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 18);
+TextStyle menuItemTextStyle = TextStyle(fontSize: 22, fontWeight: FontWeight.bold,color: Colors.white);
 String apiDomain = "https://www.akijplastics.com/";

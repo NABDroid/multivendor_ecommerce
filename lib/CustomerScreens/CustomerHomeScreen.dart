@@ -24,13 +24,6 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
-        // backgroundColor: Colors.white70,
-        // leading: IconButton(
-        //   color: darkIconColor,
-        //   onPressed: () {},
-        //   icon: Image.asset(
-        //       "assets/icons/menus_32px.png"), //change to Hamburger Icon
-        // ),
         actions: [
           IconButton(
               onPressed: () {},
