@@ -17,6 +17,9 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  bool isObscure = true;
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -42,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 15,
               ),
               Text(
-                "Email or Phone",
+                "Phone Number",
                 style: descriptionTextStyle,
               ),
               const SizedBox(
@@ -50,8 +53,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               TextField(
                 controller: phoneController,
+                keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-                    label: const Text("name@example.com"),
+                    label: const Text("01xxxxxxxxx"),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       borderSide: BorderSide(color: inactiveTFColor, width: 2),
@@ -72,8 +76,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 7,
               ),
               TextField(
+                obscureText: isObscure,
                 controller: passwordController,
                 decoration: InputDecoration(
+                    suffixIcon: IconButton(onPressed: (){
+                      setState(() {
+                        isObscure  =! isObscure;
+                      });
+                    }, icon:  isObscure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off), ),
                     label: const Text("********"),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
