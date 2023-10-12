@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:multivendor_ecommerce/CustomerScreens/SignUp.dart';
 import 'package:multivendor_ecommerce/Global.dart';
 import 'package:multivendor_ecommerce/GlobalScreens/LoginScreen.dart';
