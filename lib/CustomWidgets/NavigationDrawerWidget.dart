@@ -140,12 +140,12 @@ class NavigationDrawerWidget extends StatelessWidget {
               child: Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 3),
+                    padding: const EdgeInsets.only(left: 5),
                     child: Icon(Icons.login),
                   ),
                   TextButton(onPressed: (){
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-                  }, child: Text("Log In / Register", style: TextStyle(fontSize: 22,color: Colors.black)),),
+                  }, child: Text("Log In / Register", style: TextStyle(fontSize: 18,color: Colors.black)),),
                 ],
               ),
             ),
