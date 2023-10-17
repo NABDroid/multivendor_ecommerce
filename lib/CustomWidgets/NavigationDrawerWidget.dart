@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multivendor_ecommerce/CustomerScreens/SignUp.dart';
 import 'package:multivendor_ecommerce/Global.dart';
 import 'package:multivendor_ecommerce/GlobalScreens/LoginScreen.dart';
 
@@ -12,39 +11,19 @@ class NavigationDrawerWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.75,
       child: Column(
         children: [
-          Stack(
-            children: <Widget>[
-              Image.asset(
-                "assets/avatar.png",
-                fit: BoxFit.cover,
-              ),
-              Positioned(
-                bottom: 0.0,
-                left: 0.0,
-                right: 0.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(200, 0, 0, 0),
-                        Color.fromARGB(0, 0, 0, 0)
-                      ],
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                    ),
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  child: Text(
-                    "Customer Name",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+          const SizedBox(height: 30,),
+          CircleAvatar(
+            backgroundImage: AssetImage("assets/avatar.png"),
+            radius: 100,
+          ),
+          const SizedBox(height: 10,),
+          Text("Profile Name", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.location_on),
+              Text("Address", style: descriptionTextStyle,)
             ],
           ),
           const SizedBox(height: 8,),
