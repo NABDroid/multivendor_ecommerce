@@ -2,7 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:multivendor_ecommerce/CustomWidgets/ItemList.dart';
 import 'package:multivendor_ecommerce/CustomWidgets/NavigationDrawerWidget.dart';
 import 'package:multivendor_ecommerce/CustomerScreens/CartScreen.dart';
+import 'package:multivendor_ecommerce/CustomerScreens/CustomerNotificationScreen.dart';
+import 'package:multivendor_ecommerce/CustomerScreens/CustomerProfileScreen.dart';
 import 'package:multivendor_ecommerce/CustomerScreens/ProductDetailsScreen.dart';
+import 'package:multivendor_ecommerce/CustomerScreens/SearchScreen.dart';
+import 'package:multivendor_ecommerce/CustomerScreens/WishlistScreen.dart';
 import 'package:multivendor_ecommerce/Global.dart';
 import 'package:flutter/material.dart';
 import 'package:multivendor_ecommerce/models/models.dart';
@@ -18,6 +22,14 @@ class CustomerHomeScreen extends StatefulWidget {
 
 class _CustomerHomePageState extends State<CustomerHomeScreen> {
   int currentIndex = 0;
+
+  final screens = [
+    HomePage(),
+    SearchScreen(),
+    CustomerProfileScreen(),
+    CustomerNotificationScreen(),
+    WishlistScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +65,26 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
                 label: ""),
           ],
           onTap: (index) {
-            currentIndex = index;
-            setState(() {});
+            setState(() {
+              currentIndex = index;
+            });
           }),
+      body: screens[currentIndex]
+    ));
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(child: Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: SingleChildScrollView(
@@ -78,7 +107,7 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
                     enlargeStrategy: CenterPageEnlargeStrategy.height),
                 items: Trending.trending_items
                     .map((trending_products) =>
-                        HeroCarouselCard(trending_products: trending_products))
+                    HeroCarouselCard(trending_products: trending_products))
                     .toList(),
               ),
 
@@ -101,7 +130,7 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
                     enlargeStrategy: CenterPageEnlargeStrategy.height),
                 items: Personalised.personalised_items
                     .map((personalised_products) => HeroCarouselCard2(
-                        personalised_products: personalised_products))
+                    personalised_products: personalised_products))
                     .toList(),
               ),
 
@@ -125,6 +154,7 @@ class _CustomerHomePageState extends State<CustomerHomeScreen> {
     ));
   }
 }
+
 
 class HeroCarouselCard extends StatelessWidget {
   final Trending trending_products;
