@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multivendor_ecommerce/CustomerScreens/ProductDetailsScreen.dart';
 import 'package:multivendor_ecommerce/Global.dart';
 
 class WishlistScreen extends StatefulWidget {
@@ -40,35 +41,40 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   shrinkWrap: true,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 5,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Image.network(
-                              "https://images.unsplash.com/photo-1602080858428-57174f9431cf?auto=format&fit=crop&q=80&w=1551&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                              fit: BoxFit.cover,
+                    return GestureDetector(
+                      onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=> ProductDetailsScreen(productID: 0)));
+                    },
+                      child: Card(
+                        elevation: 5,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Image.network(
+                                "https://images.unsplash.com/photo-1602080858428-57174f9431cf?auto=format&fit=crop&q=80&w=1551&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Product name"),
-                                    Text("Stock")
-                                  ],
-                                ),
-                                Text("4.2/5"),
-                                Text("\$428"),
-                              ],
-                            ),
-                          )
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Product name"),
+                                      Text("Stock")
+                                    ],
+                                  ),
+                                  Text("4.2/5"),
+                                  Text("\$428"),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     );
                   })
