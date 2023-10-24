@@ -11,20 +11,20 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController searchController = TextEditingController();
 
-  List<DropdownItem> itemslist = [
-    DropdownItem("Sort by", 0),
-    DropdownItem("Best Sales", 0),
-    DropdownItem("Price: Low to High", 0),
-    DropdownItem("Price: High to Low", 0),
-    DropdownItem("Rating", 0),
-    DropdownItem("Latest Items", 0),
+  List<DropdownOptions> optionsList = [
+    DropdownOptions("Sort by", 0),
+    DropdownOptions("Best Sales", 1),
+    DropdownOptions("Price: Low to High", 2),
+    DropdownOptions("Price: High to Low", 3),
+    DropdownOptions("Rating", 4),
+    DropdownOptions("Latest Items", 5),
   ];
 
-  late DropdownItem? selectedDropdownItem;
+  late DropdownOptions? selectedDropdownOption;
 
   @override
   void initState() {
-    selectedDropdownItem = itemslist[0];
+    selectedDropdownOption = optionsList[0];
     super.initState();
   }
 
@@ -55,15 +55,15 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: DropdownButton<DropdownItem>(
-                  value: selectedDropdownItem,
-                  items: itemslist.map((DropdownItem item){
-                    return DropdownMenuItem<DropdownItem>(
-                      value: item,
-                      child: Text(item.itemName),);
+              child: DropdownButton<DropdownOptions>(
+                  value: selectedDropdownOption,
+                  items: optionsList.map((DropdownOptions option){
+                    return DropdownMenuItem<DropdownOptions>(
+                      value: option,
+                      child: Text(option.optionName),);
                   }).toList(),
-                  onChanged: (selectedItem){
-                    selectedDropdownItem = selectedItem;
+                  onChanged: (selectedOption){
+                    selectedDropdownOption = selectedOption;
                     setState(() {
 
                     });
@@ -116,11 +116,11 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 }
 
-class DropdownItem{
+class DropdownOptions{
 
-  late String itemName;
-  late int itemID;
+  late String optionName;
+  late int optionID;
 
-  DropdownItem(this.itemName, this.itemID);
+  DropdownOptions(this.optionName, this.optionID);
 
 }
